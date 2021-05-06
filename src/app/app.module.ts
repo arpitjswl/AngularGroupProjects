@@ -7,6 +7,8 @@ import { LoginComponent } from './Account/login/login.component';
 import { NavMenuComponent } from './Header/nav-menu/nav-menu.component';
 import { HomeComponent } from './Dashboard/home/home.component';
 import { RegisterComponent } from './Account/register/register.component';
+import { ErrorComponent } from './error/error.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { RegisterComponent } from './Account/register/register.component';
     LoginComponent,
     NavMenuComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

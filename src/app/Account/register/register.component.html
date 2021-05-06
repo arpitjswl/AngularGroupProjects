@@ -1,1 +1,49 @@
-<p>register works!</p>
+    <h2 class="heading">Register NOW</h2>
+
+    <hr>
+
+    <form  name="" (ngSubmit) = "onSubmitForm()" #f = "ngForm">
+
+    <div class="row row-style" >
+        <div class="col col-md-1 col-sm-12">
+            <label>Name</label>
+        </div>
+        <div class="col col-md-5 col-sm-12">
+            <input type="text" class="form-control" name="userName" ngModel>
+        </div>
+    
+        <div class="col col-md-1 col-sm-12">
+            <label>Email Id</label>
+        </div>
+        <div class="col col-md-5 col-sm-12">
+            <input type="email" class="form-control" name="email" ngModel> 
+        </div>
+    </div>   
+
+    
+    <div class="row row-style">
+        <div class="col col-md-1 col-sm-12">
+            <label>Mobile Number</label>
+        </div>
+        <div class="col col-md-5 col-sm-12">
+            <input type="number" class="form-control" name="mobile" ngModel>
+        </div>
+
+        
+    
+        <div class="col col-md-1 col-sm-12">
+            <label>Address (optional) </label>
+        </div>
+        <div class="col col-md-5 col-sm-12">
+             <textarea class="form-control" name="address" ngModel></textarea>
+        </div>
+
+    </div>   
+    
+    <div class="row">
+        <div class="col md-2">
+            <button class="btn btn-primary" type="submit" [disabled] = "!f.valid">
+                Submit</button>
+        </div>
+    </div>
+</form>

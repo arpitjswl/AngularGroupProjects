@@ -19,7 +19,8 @@ import { DashboardNavComponent } from './Header/dashboard-nav/dashboard-nav.comp
     NavMenuComponent,
     HomeComponent,
     RegisterComponent,
-    ErrorComponent
+    ErrorComponent,
+    DashboardNavComponent
   ],
   imports: [
     BrowserModule,

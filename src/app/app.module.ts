@@ -9,6 +9,8 @@ import { HomeComponent } from './Dashboard/home/home.component';
 import { RegisterComponent } from './Account/register/register.component';
 import { ErrorComponent } from './error/error.component';
 import { FormsModule } from '@angular/forms';
+import { DashboardNavComponent } from './Header/dashboard-nav/dashboard-nav.component';
+
 
 @NgModule({
   declarations: [

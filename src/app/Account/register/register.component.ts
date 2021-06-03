@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() : void{
-    console.log(this.formObject);
+    console.log('is valid ' +this.formObject);
     this.userService.registerUser(this.user).subscribe(
       data => {
         alert('User Registered Successfully');

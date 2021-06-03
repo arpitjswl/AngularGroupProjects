@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/service/user.service';
 
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
   @ViewChild('f') formObject! : NgForm;
   user: User = new User();
 
-  constructor(private userService : UserService) { }
+  constructor(private userService : UserService, private route : Router) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +24,8 @@ export class RegisterComponent implements OnInit {
     this.userService.registerUser(this.user).subscribe(
       data => {
         alert('User Registered Successfully');
+        if (this.user != null)
+        this.route.navigate(['/login']);
       }
     );
 

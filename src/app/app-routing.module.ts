@@ -10,7 +10,9 @@ import { ErrorComponent } from './error/error.component';
     {  path: '', component: LoginComponent },
     {  path: 'Home', component: HomeComponent },
     {  path:'Register' ,component:RegisterComponent },
+    {  path:'login' ,component:LoginComponent },
     {  path:'**' ,component:ErrorComponent }
+    
     ];
 
 @NgModule({

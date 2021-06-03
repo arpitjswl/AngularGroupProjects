@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { User } from 'src/app/model/user';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-register',
@@ -9,14 +11,21 @@ import { NgForm } from '@angular/forms';
 export class RegisterComponent implements OnInit {
 
   @ViewChild('f') formObject! : NgForm;
+  user: User = new User();
 
-  constructor() { }
+  constructor(private userService : UserService) { }
 
   ngOnInit(): void {
   }
 
-  onSubmitForm(){
+  registerUser() : void{
     console.log(this.formObject);
+    this.userService.registerUser(this.user).subscribe(
+      data => {
+        alert('User Registered Successfully');
+      }
+    );
+
   }
 
 }

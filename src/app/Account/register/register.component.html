@@ -2,21 +2,21 @@
 
     <hr>
 
-    <form  name="" (ngSubmit) = "onSubmitForm()" #f = "ngForm">
+    <form  #f = "ngForm">
 
     <div class="row row-style" >
         <div class="col col-md-1 col-sm-12">
             <label>Name</label>
         </div>
         <div class="col col-md-5 col-sm-12">
-            <input type="text" class="form-control" name="userName" ngModel>
+            <input type="text" class="form-control" name="userName" [(ngModel)]="user.user_name">
         </div>
     
         <div class="col col-md-1 col-sm-12">
             <label>Email Id</label>
         </div>
         <div class="col col-md-5 col-sm-12">
-            <input type="email" class="form-control" name="email" ngModel> 
+            <input type="email" class="form-control" name="email" [(ngModel)]="user.user_email"> 
         </div>
     </div>   
 
@@ -26,7 +26,7 @@
             <label>Mobile Number</label>
         </div>
         <div class="col col-md-5 col-sm-12">
-            <input type="number" class="form-control" name="mobile" ngModel>
+            <input type="number" class="form-control" name="mobile" [(ngModel)]="user.user_mobile">
         </div>
 
         
@@ -35,7 +35,7 @@
             <label>Address (optional) </label>
         </div>
         <div class="col col-md-5 col-sm-12">
-             <textarea class="form-control" name="address" ngModel></textarea>
+             <textarea class="form-control" name="address" [(ngModel)]="user.user_address"></textarea>
         </div>
 
     </div>   
@@ -43,8 +43,9 @@
     <div class="checkbox">
         <label><input type="checkbox" name="offersConsent" ngModel> Send me Promotional Offers</label>
       </div>
-   
-    <div class="text-center">
-        <input type="submit"  class="btn btn-primary" value="Register NOW">
-    </div>
+
+    
+        <div class="text-center">
+              <button class="btn btn-success" (click)="registerUser()">Register</button>
+        </div>
 </form>

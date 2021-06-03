@@ -10,6 +10,7 @@ import { RegisterComponent } from './Account/register/register.component';
 import { ErrorComponent } from './error/error.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardNavComponent } from './Header/dashboard-nav/dashboard-nav.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { DashboardNavComponent } from './Header/dashboard-nav/dashboard-nav.comp
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

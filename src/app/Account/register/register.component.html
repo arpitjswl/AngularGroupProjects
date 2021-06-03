@@ -39,9 +39,24 @@
         </div>
 
     </div>   
-    
+
+
+
+    <div class="row row-style">
+        <div class="col col-md-1 col-sm-12">
+            <label>Password</label>
+        </div>
+        <div class="col col-md-5 col-sm-12">
+            <input type="password" name="password" [(ngModel)]="user.user_password"  class="form-control"/>
+        </div>
+    </div>
+
+
+
+
     <div class="checkbox">
-        <label><input type="checkbox" name="offersConsent" ngModel> Send me Promotional Offers</label>
+        <label><input type="checkbox" name="offersConsent" [(ngModel)]="user.user_consent">
+             Send me Promotional Offers</label>
       </div>
 
     

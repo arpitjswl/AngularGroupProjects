@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
+import { AuthenticateService } from 'src/app/service/authenticate.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -10,17 +12,27 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
   user = new User();
+  invalidLogin : boolean = false;
 
+  constructor(private userService: UserService, private authenticateService : AuthenticateService,
+    private route : Router) { }
+      
   ngOnInit(): void {
   }
 
-  getUserData(){
+  getUserData(email: { value: string; }, pwd: { value: string; }){
       this.userService.getUserDetails(this.user.user_email)
       .subscribe( data => {
         this.user = data;
+        if (this.authenticateService.authenticate(this.user, email.value, pwd.value)){
+          this.route.navigate(['/welcome'])
+          this.invalidLogin = false
+        }
+        else{
+              this.invalidLogin = true;
+               this.route.navigate(['/login'])
+              }
       });
   }
-
 }

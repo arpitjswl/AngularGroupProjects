@@ -11,6 +11,8 @@ import { ErrorComponent } from './error/error.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardNavComponent } from './Header/dashboard-nav/dashboard-nav.component';
 import { HttpClientModule } from '@angular/common/http';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     RegisterComponent,
     ErrorComponent,
-    DashboardNavComponent
+    DashboardNavComponent,
+    WelcomeComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

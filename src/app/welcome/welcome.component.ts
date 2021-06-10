@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../model/user';
+import { AuthenticateService } from '../service/authenticate.service';
+import { ExchangeDataBetweenComponentsService } from '../service/exchange-data-between-components.service';
 
 @Component({
   selector: 'app-welcome',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor() { }
+  userName! : string;
+  
+  constructor(private authenticateService : AuthenticateService,
+    private exchangeDataBetweenComponentsService : ExchangeDataBetweenComponentsService) { }
 
-  ngOnInit(): void {
+  ngOnInit() : void{
+    this.userName = this.exchangeDataBetweenComponentsService.getMessage();
   }
 
 }

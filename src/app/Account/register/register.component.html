@@ -1,66 +1,73 @@
-    <h2 class="heading">Register NOW</h2>
+<h2 class="heading">Register NOW</h2>
 
-    <hr>
+<hr>
 
-    <form  #f = "ngForm">
+<form  #f = "ngForm" novalidate>
 
-    <div class="row row-style" >
-        <div class="col col-md-1 col-sm-12">
-            <label>Name</label>
-        </div>
-        <div class="col col-md-5 col-sm-12">
-            <input type="text" class="form-control" name="userName" [(ngModel)]="user.user_name">
-        </div>
-    
-        <div class="col col-md-1 col-sm-12">
-            <label>Email Id</label>
-        </div>
-        <div class="col col-md-5 col-sm-12">
-            <input type="email" class="form-control" name="email" [(ngModel)]="user.user_email"> 
-        </div>
-    </div>   
-
-    
-    <div class="row row-style">
-        <div class="col col-md-1 col-sm-12">
-            <label>Mobile Number</label>
-        </div>
-        <div class="col col-md-5 col-sm-12">
-            <input type="number" class="form-control" name="mobile" [(ngModel)]="user.user_mobile">
-        </div>
-
-        
-    
-        <div class="col col-md-1 col-sm-12">
-            <label>Address (optional) </label>
-        </div>
-        <div class="col col-md-5 col-sm-12">
-             <textarea class="form-control" name="address" [(ngModel)]="user.user_address"></textarea>
-        </div>
-
-    </div>   
-
-
-
-    <div class="row row-style">
-        <div class="col col-md-1 col-sm-12">
-            <label>Password</label>
-        </div>
-        <div class="col col-md-5 col-sm-12">
-            <input type="password" name="password" [(ngModel)]="user.user_password"  class="form-control"/>
-        </div>
+<div class="row row-style" >
+    <div class="col col-md-1 col-sm-12 control-label">
+        <label>Name</label>
+    </div>
+    <div class="col col-md-5 col-sm-12">
+        <input [class.error] = "userNameData.invalid && userNameData.touched" type="text" class="form-control" name="userName" [(ngModel)]="user.user_name"
+            required #userNameData = "ngModel">
+        <small  class="text-danger" *ngIf = "userNameData.invalid && userNameData.touched">Name is required</small>
     </div>
 
+    <div class="col col-md-1 col-sm-12">
+        <label>Email Id</label>
+    </div>
+    <div class="col col-md-5 col-sm-12">
+        <input [class.error] = "email.invalid && email.touched" type="email" class="form-control" name="email" [(ngModel)]="user.user_email" 
+            #email = "ngModel" required pattern= "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"> 
+        <small  class="text-danger" *ngIf = "email.invalid && email.touched">Email id is required</small>
+    </div>
+</div>   
 
 
-
-    <div class="checkbox">
-        <label><input type="checkbox" name="offersConsent" [(ngModel)]="user.user_consent">
-             Send me Promotional Offers</label>
-      </div>
+<div class="row row-style">
+    <div class="col col-md-1 col-sm-12">
+        <label>Mobile Number</label>
+    </div>
+    <div class="col col-md-5 col-sm-12">
+        <input [class.error] = "mobile.invalid && mobile.touched"
+            type="number" class="form-control" name="mobile" [(ngModel)]="user.user_mobile"
+            required #mobile = "ngModel">
+        <small  class="text-danger" *ngIf = "mobile.invalid && mobile.touched">Phone is required</small>
+    </div>
 
     
-        <div class="text-center">
-              <button class="btn btn-success" (click)="registerUser()">Register</button>
-        </div>
+
+    <div class="col col-md-1 col-sm-12">
+        <label>Address (optional) </label>
+    </div>
+    <div class="col col-md-5 col-sm-12">
+         <textarea class="form-control" name="address" [(ngModel)]="user.user_address"></textarea>
+    </div>
+
+</div>   
+
+<div class="row row-style">
+    <div class="col col-md-1 col-sm-12">
+        <label>Password</label>
+    </div>
+    <div class="col col-md-5 col-sm-12">
+        <input [class.error] = "password.invalid && password.touched"
+            type="password" name="password" [(ngModel)]="user.user_password"  class="form-control" 
+        required #password = "ngModel">
+        <small  class="text-danger" *ngIf = "password.invalid && password.touched">Password is required</small>
+    </div>
+</div>
+
+<div class="checkbox">
+    <label><input type="checkbox" name="offersConsent" [(ngModel)]="user.user_consent">
+         Send me Promotional Offers</label>
+  </div>
+
+
+    <div class="text-center">
+          <button  [disabled] = "f.invalid" class="btn btn-success" (click)="registerUser()">Register</button>
+    </div>
+
 </form>
+

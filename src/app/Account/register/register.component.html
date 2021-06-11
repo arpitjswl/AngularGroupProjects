@@ -19,8 +19,10 @@
     </div>
     <div class="col col-md-5 col-sm-12">
         <input [class.error] = "email.invalid && email.touched" type="email" class="form-control" name="email" [(ngModel)]="user.user_email" 
-            #email = "ngModel" required pattern= "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"> 
-        <small  class="text-danger" *ngIf = "email.invalid && email.touched">Email id is required</small>
+            #email = "ngModel" required email> 
+        <small  class="text-danger" *ngIf = "email.errors?.required &&
+        email.touched">Email id is required</small> 
+        <small  class="text-danger" *ngIf = "email.errors?.email && email.touched">Email id is INVALID</small>
     </div>
 </div>   
 

@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild('f') formObject! : NgForm;
   user: User = new User();
+  isFormValid : boolean = true;
 
   constructor(private userService : UserService, private route : Router) { }
 
@@ -20,15 +21,20 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() : void{
-    console.log('is valid ' +this.formObject);
-    this.userService.registerUser(this.user).subscribe(
-      data => {
-        alert('User Registered Successfully');
-        if (this.user != null)
-        this.route.navigate(['/login']);
+    if (this.formObject.valid){
+      this.isFormValid = true;
+      this.userService.registerUser(this.user).subscribe(
+        data => {
+          alert('User Registered Successfully');
+          if (this.formObject.valid)
+            this.route.navigate(['/login']);
+        }
+      );
       }
-    );
-
+    else
+     this.isFormValid = false;
+    
   }
+
 
 }

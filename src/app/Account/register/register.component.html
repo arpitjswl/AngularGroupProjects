@@ -1,4 +1,9 @@
-<h2 class="heading">Register NOW</h2>
+<hr>
+<div>
+    <small *ngIf = "!isFormValid" class="alert alert-danger">Please Check all fields</small>
+</div>
+
+<h2 class="heading">REGISTER NOW</h2>
 
 <hr>
 
@@ -38,8 +43,6 @@
         <small  class="text-danger" *ngIf = "mobile.invalid && mobile.touched">Phone is required</small>
     </div>
 
-    
-
     <div class="col col-md-1 col-sm-12">
         <label>Address (optional) </label>
     </div>
@@ -66,10 +69,9 @@
          Send me Promotional Offers</label>
   </div>
 
-
     <div class="text-center">
-          <button  [disabled] = "f.invalid" class="btn btn-success" (click)="registerUser()">Register</button>
+          <button class="btn btn-success" (click)="registerUser()">Register</button>
     </div>
 
+  
 </form>
-

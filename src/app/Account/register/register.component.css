@@ -3,5 +3,7 @@
 }
 
 .heading{
-    color : blue;
+    text-align: center; 
+    color:brown;
+    font-style: oblique
 }

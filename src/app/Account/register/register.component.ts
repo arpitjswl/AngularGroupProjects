@@ -14,9 +14,7 @@ export class RegisterComponent implements OnInit {
   @ViewChild('f') formObject! : NgForm;
   user: User = new User();
   isFormValid : boolean = false;
-  @ViewChild('email') inputEmail!: ElementRef;
   isEmailExists! : boolean;
-  @ViewChild('sex') sexVal!: ElementRef;
 
   constructor(private userService : UserService, private route : Router) { }
 

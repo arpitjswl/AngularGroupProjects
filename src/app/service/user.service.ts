@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from '../model/user';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { User } from '../model/user';
 })
 export class UserService {
 
-  url = 'http://localhost:8888/api'; // Saving User Data
+  url = 'http://localhost:8888/api'; // Default URL for API
 
   constructor(private http : HttpClient) { }
 
@@ -19,6 +20,11 @@ export class UserService {
   // Method for Fetching User Object from email id, for retreving password for Login Purpose
   public getUserDetails(email : string){
     return this.http.get<User>(this.url + '/' + 'getUser' + '/' +email);
+  }
+
+   // Method for getting Duplicate email from DB if it returned true means email is existed in DB
+   public checkForDuplicateEmail(email : string){
+    return this.http.get<boolean>(this.url + '/' + 'getEmail' + '/' +email);
   }
 
 }

@@ -1,6 +1,7 @@
 <hr>
+
 <div>
-    <small *ngIf = "!isFormValid" class="alert alert-danger">Please Check all fields</small>
+    <small *ngIf = "(!isFormValid)" class="alert alert-danger">Please Check all fields</small>
 </div>
 
 <h2 class="heading">REGISTER NOW</h2>
@@ -24,10 +25,11 @@
     </div>
     <div class="col col-md-5 col-sm-12">
         <input [class.error] = "email.invalid && email.touched" type="email" class="form-control" name="email" [(ngModel)]="user.user_email" 
-            #email = "ngModel" required email> 
+            #email = "ngModel" required email (keyup)="0"> 
         <small  class="text-danger" *ngIf = "email.errors?.required &&
         email.touched">Email id is required</small> 
         <small  class="text-danger" *ngIf = "email.errors?.email && email.touched">Email id is INVALID</small>
+        <small  class="text-danger" *ngIf = "isEmailExists">Email already exits</small>
     </div>
 </div>   
 
@@ -70,7 +72,7 @@
   </div>
 
     <div class="text-center">
-          <button class="btn btn-success" (click)="registerUser()">Register</button>
+          <button class="btn btn-success" (click)="registerUser(email)">Register</button>
     </div>
 
   

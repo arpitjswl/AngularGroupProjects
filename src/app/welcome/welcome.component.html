@@ -1,3 +1,26 @@
 <p>welcome works!</p>
 
 Data : {{userName}}
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Password</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let data of user">
+        <td>{{data.user_id}}</td>
+        <td>{{data.user_name}}</td>
+        <td>{{data.user_email}}</td>
+        <td>{{data.user_password}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-primary" (click) = "getAllRegsiteredUsers()">Get Users Data</button>
+  <button class="btn btn-primary" (click) = "sort()">Sort By Name</button>

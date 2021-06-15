@@ -1,0 +1,40 @@
+How to handle error in ANgular
+
+private getServerErrorMessage(error: HttpErrorResponse): string {
+    switch (error.status) {
+        case 404: {
+            return `Not Found: ${error.message}`;
+        }
+        case 403: {
+            return `Access Denied: ${error.message}`;
+        }
+        case 500: {
+            return `Internal Server Error: ${error.message}`;
+        }
+        case 409: {
+          return `Email NOT found in DB: ${error.message}`;
+      }
+        default: {
+            return `Unknown Server Error: ${error.message}`;
+        }
+
+    }
+  }
+
+  public registerUser(user : User){
+      return this.http.post<User>(this.url + '/' + 'save1', user).pipe(
+        catchError(error => {
+            
+            if (error.error instanceof ErrorEvent) {
+                this.errorMsg = `Error: ${error.error.message}`;
+                console.log('msg is ' + this.errorMsg);
+                
+            } else {
+                this.errorMsg = this.getServerErrorMessage(error);
+                console.log('msg is ' + this.errorMsg);
+            }
+
+            return throwError(this.errorMsg);
+        })
+    );
+  }

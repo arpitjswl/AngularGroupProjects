@@ -4,6 +4,8 @@
     <small *ngIf = "(!isFormValid)" class="alert alert-danger">Please Check all fields</small>
 </div> -->
 
+<strong *ngIf = "errorMsg" class="alert-info">Error Occured : {{errorMsg}}</strong>
+
 <h2 class="heading">REGISTER NOW</h2>
 
 <hr>
@@ -77,3 +79,4 @@
 
   
 </form>
+

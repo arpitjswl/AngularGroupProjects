@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   user: User = new User();
   isFormValid : boolean = false;
   isEmailExists! : boolean;
+  errorMsg!: string;
 
   constructor(private userService : UserService, private route : Router) { }
 
@@ -32,7 +33,8 @@ export class RegisterComponent implements OnInit {
               alert('User Registered Successfully');
               if (this.formObject.valid)
                 this.route.navigate(['/login']);
-            }
+            },
+            error => this.errorMsg = error
           );
       }
     }

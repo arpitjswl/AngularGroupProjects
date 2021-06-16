@@ -13,6 +13,7 @@ export class WelcomeComponent implements OnInit {
 
   userName! : string;
   user! : User[];
+  errorData! : string;
 
   constructor(private authenticateService : AuthenticateService,
     private exchangeDataBetweenComponentsService : ExchangeDataBetweenComponentsService,
@@ -27,7 +28,8 @@ export class WelcomeComponent implements OnInit {
       res => {
         this.user = res;
         return this.user;
-      }
+      },
+      error => this.errorData = error
     );
 
     return this.user;

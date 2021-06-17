@@ -21,7 +21,7 @@ export class UserService {
 
   // Method to Save data in Database for User Object while registering
   public registerUser(user : User){
-      return this.http.post<User>(this.url + '/' + 'save', user).pipe(catchError(this.handleError));
+      return this.http.post<User>(this.url + '/' + 'save', user).pipe(catchError(this.handleErrorForPost));
   }
 
   // Method for Fetching User Object from email id, for retreving password for Login Purpose
@@ -44,6 +44,18 @@ export class UserService {
     else {
       this.errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
       console.log('server side error' + this.errorMessage);
+      // server-side error
+    }
+    return throwError(this.errorMessage);
+  }
+
+  handleErrorForPost(error : HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      this.errorMessage = `Error: ${error.error.message}`;
+      // client-side error
+    }
+    else {
+      this.errorMessage = `email already exists`;
       // server-side error
     }
     return throwError(this.errorMessage);

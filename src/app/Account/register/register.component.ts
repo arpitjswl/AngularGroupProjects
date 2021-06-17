@@ -13,33 +13,34 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild('f') formObject! : NgForm;
   user: User = new User();
-  isFormValid : boolean = false;
   isEmailExists! : boolean;
   errorMsg!: string;
+  isSuccessfullyRegsitered! : boolean;
+  isFormValid! : boolean;
+  isButtonClicked! : boolean;
 
   constructor(private userService : UserService, private route : Router) { }
 
   ngOnInit(): void {
-    this.isFormValid = true;
   }
 
-  registerUser(email: { value: string; }) : void{
-    this.isEmailExists  = this.checkIfEmailExistsInDB(email.value);
-      if (this.isEmailExists === false){
+ registerUser() : void{
+   if (!this.formObject.valid)
+      this.isButtonClicked = true;
+      
+    if (this.formObject.valid){
+      this.userService.registerUser(this.user).subscribe(     
+        data => {
           if (this.formObject.valid){
-          this.isFormValid = true;
-          this.userService.registerUser(this.user).subscribe(
-            data => {
-              alert('User Registered Successfully');
-              if (this.formObject.valid)
-                this.route.navigate(['/login']);
-            },
-            error => this.errorMsg = error
-          );
-      }
+            //this.route.navigate(['/login']);
+            this.isSuccessfullyRegsitered = true;
+            this.isFormValid = true;
+          }
+            
+        },
+        error => this.errorMsg = error      
+      );
     }
-    else
-      this.isFormValid = false;
   }
 
 checkIfEmailExistsInDB(inputEmail : string) : boolean{

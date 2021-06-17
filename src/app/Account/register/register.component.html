@@ -1,14 +1,14 @@
-<hr>
+<div>
+    <hr>
+    
+    <div>
+        <small class="alert alert-danger" *ngIf = "isButtonClicked">Please check all fields</small>
+    </div>
+    
+        <h2 class="heading">REGISTER NOW</h2>   
+    <hr>
+    </div>
 
-<!-- <div>
-    <small *ngIf = "(!isFormValid)" class="alert alert-danger">Please Check all fields</small>
-</div> -->
-
-<strong *ngIf = "errorMsg" class="alert-info">Error Occured : {{errorMsg}}</strong>
-
-<h2 class="heading">REGISTER NOW</h2>
-
-<hr>
 
 <form  #f = "ngForm" novalidate>
 
@@ -31,7 +31,7 @@
         <small  class="text-danger" *ngIf = "email.errors?.required &&
         email.touched">Email id is required</small> 
         <small  class="text-danger" *ngIf = "email.errors?.email && email.touched">Email id is INVALID</small>
-        <small  class="text-danger" *ngIf = "isEmailExists">Email already exits</small>
+        <small  class="text-danger" *ngIf = "errorMsg">Email already exits</small>
     </div>
 </div>   
 
@@ -63,7 +63,7 @@
     <div class="col col-md-5 col-sm-12">
         <input [class.error] = "password.invalid && password.touched"
             type="password" name="password" [(ngModel)]="user.user_password"  class="form-control" 
-        required #password = "ngModel">
+        required #password = "ngModel" minlength="5" maxlength="15">
         <small  class="text-danger" *ngIf = "password.invalid && password.touched">Password is required</small>
     </div>
 </div>
@@ -74,9 +74,10 @@
   </div>
 
     <div class="text-center">
-          <button class="btn btn-success" (click)="registerUser(email)">Register</button>
+          <button class="btn btn-success" (click)="registerUser()">Register</button>
     </div>
 
+    <small *ngIf = "isSuccessfullyRegsitered" class="alert alert-success alert-dismissible fade show">
+        You have Successfully Registered now <a routerLink = "/login" *ngIf = "isSuccessfullyRegsitered">Login</a></small>
   
 </form>
-

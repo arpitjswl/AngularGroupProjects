@@ -38,3 +38,25 @@ private getServerErrorMessage(error: HttpErrorResponse): string {
         })
     );
   }
+
+
+  /Old method
+
+    // registerUser(email: { value: string; }) : void{
+  //   this.isEmailExists  = this.checkIfEmailExistsInDB(email.value);
+  //     if (this.isEmailExists === false){
+  //         if (this.formObject.valid){
+  //         this.isFormValid = true;
+  //         this.userService.registerUser(this.user).subscribe(
+  //           data => {
+  //             alert('User Registered Successfully');
+  //             if (this.formObject.valid)
+  //               this.route.navigate(['/login']);
+  //           },
+  //           error => this.errorMsg = error
+  //         );
+  //     }
+  //   }
+  //   else
+  //     this.isFormValid = false;
+  // }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
 
   user = new User();
   invalidLogin : boolean = false;
+  errorMsg! : string;
+  passwordInitialVal : string = '';
 
   constructor(private userService: UserService, private authenticateService : AuthenticateService,
     private route : Router, 
@@ -35,7 +37,9 @@ export class LoginComponent implements OnInit {
         else{
               this.invalidLogin = true;
                this.route.navigate(['/login'])
-              }
-      });
+          }
+      },  
+        error => this.errorMsg = error    
+      );
   }
 }

@@ -1,10 +1,8 @@
-<p>welcome works!</p>
-
-Data : {{userName}}
+Welcome  <h2>{{userName}}</h2>
 
 <strong *ngIf = "errorData" class="alert-info">Error Occured : {{errorData}}</strong>
 <table class="table">
-    <thead>
+    <thead class="thead-dark">
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Name</th>
@@ -24,3 +22,8 @@ Data : {{userName}}
 
   <button class="btn btn-primary" (click) = "getAllRegsiteredUsers()">Get Users Data</button>
   <button class="btn btn-primary" (click) = "sort()">Sort By Name</button>
+ 
+
+  <!-- <div style="height: 100px ; width: 200px;" (click) = "imgCalled()">
+    <img src="assets/img/c0ba9ec0f08684316b2552a8eb5a1ea8_o2_featured_v2 (1).jpg" alt="image" class="img">
+  <div> -->
